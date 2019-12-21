@@ -1,5 +1,5 @@
 /*
-Project:		
+Project:		枚举后逐个Kruskal
 Problem_type:	
 Author: 		kawaii_pendant
 Date:   		2019-12-22 00:06:50
