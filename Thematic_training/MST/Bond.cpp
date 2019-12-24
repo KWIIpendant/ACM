@@ -2,8 +2,8 @@
 Project:		
 Problem_type:	
 Author: 		kawaii_pendant
-Date:   		2019-12-23 16:02:11
-Last Modified Time: 2019-12-23 16:43:01
+Date:   		2019-12-23 19:19:28
+Last Modified Time: 2019-12-23 20:24:47
 */
 #include <vector>
 #include <cstdio>
@@ -12,29 +12,28 @@ Last Modified Time: 2019-12-23 16:43:01
 #include <algorithm>
 #define ll long long
 using namespace std;
-const int maxn=5e5+10;
-const int maxm=1e5+10;
+const int maxn=1e5+10;
+const int maxm=5e5+10;
 int n,m,q;
 int p[maxn],dep[maxn];
 int st[maxn][24],gw[maxn][24];
 struct EDGE{
 	int u,v;
-	ll w;
+	int w;
 	bool operator<(const EDGE b)const{
 		return w<b.w;
 	}
 }e[maxm];
 struct Edge{
-	int to;
-	ll w;
+	int to,w;
 	Edge(){}
-	Edge(int to,ll w):to(to),w(w){}
+	Edge(int to,int w):to(to),w(w){}
 };
 vector<Edge> edges[maxn];
 void dfs(int u,int fa,int dis){
 	dep[u]=dep[fa]+1;
 	gw[u][0]=dis,st[u][0]=fa;
-	for(int i=1;(i<<i)<=dep[u];i++){
+	for(int i=1;(1<<i)<=dep[u];i++){
 		st[u][i]=st[st[u][i-1]][i-1];
 		gw[u][i]=max(gw[u][i-1],gw[st[u][i-1]][i-1]);
 	}
@@ -66,17 +65,19 @@ int main(){
 	int T=0;
 	while(~scanf("%d%d",&n,&m)){
 		if(T++) printf("\n");
-		memset(dep,0,sizeof(dep));
 		for(int i=1;i<=n;i++) edges[i].clear(),p[i]=i;
+		memset(dep,0,sizeof(dep));
+		memset(gw,0,sizeof(gw));
+		memset(st,0,sizeof(st));
 		for(int i=0;i<m;i++){
-			scanf("%d%d%lld",&e[i].u,&e[i].v,&e[i].w);
+			scanf("%d%d%d",&e[i].u,&e[i].v,&e[i].w);
 		}
 		sort(e,e+m);
 		int now=0;
 		for(int i=0;i<m&&now<n-1;i++){
 			int fa=find(e[i].u),fb=find(e[i].v);
 			int u=e[i].u,v=e[i].v;
-			ll w=e[i].w;
+			int w=e[i].w;
 			if(fa!=fb){
 				p[fa]=fb;
 				edges[u].push_back(Edge(v,w));
@@ -93,4 +94,5 @@ int main(){
 			else printf("%d\n",LCA(u,v));
 		}
 	}
+	return 0;
 }
