@@ -3,7 +3,7 @@ Project:
 Problem_type:	
 Author: 		kawaii_pendant
 Date:   		2019-12-21 17:09:07
-Last Modified Time: 2019-12-21 21:14:48
+Last Modified Time: 2019-12-24 16:17:08
 */
 #include <cstdio>
 #include <iostream>
@@ -49,6 +49,7 @@ int main(){
 	while(1){
 		if(judge()) break;
 		add(tmp);
+		break;
 	}	
 	cout<<n<<endl;
 	for(int i=0;i<n;i++){
