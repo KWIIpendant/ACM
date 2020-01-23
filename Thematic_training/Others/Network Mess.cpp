@@ -3,7 +3,7 @@ Project:		UVA 1667
 Problem_type:	
 Author: 		kawaii_pendant
 Date:   		2020-01-22 22:23:15
-Last Modified Time: 2020-01-22 23:08:12
+Last Modified Time: 2020-01-23 19:51:52
 */
 #include <cstdio>
 #include <cstring>
